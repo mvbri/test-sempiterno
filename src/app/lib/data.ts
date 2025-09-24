@@ -8,7 +8,7 @@ export const fetchBooks = async ({ query } : {query: string | string[]}): Promis
   try {
     const res = await fetch(`https://openlibrary.org/search.json?q=${query}`);
 
-    if(!res.ok)  throw Error("Something goes wrog")
+    if(!res.ok)  throw Error("Something goes wrong")
         
     const data = await res.json()
     console.log(data)
@@ -24,7 +24,7 @@ export const fetchTrendingBooks = async () => {
   try {
     const res = await fetch(`https://openlibrary.org/trending/daily.json`);
 
-    if(!res.ok)  throw Error("Something goes wrog")
+    if(!res.ok)  throw Error("Something goes wrong")
         
     const data = await res.json()
     console.log(data)

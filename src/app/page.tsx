@@ -12,7 +12,7 @@ export default async function Home({
   const searchQuery = params?.search || "";
   return (
     <div className="pt-[4rem]">
-      <Suspense fallback={<Loading />}>
+      <Suspense key={searchQuery as string} fallback={<Loading />}>
         <BookList query={searchQuery} />
       </Suspense>
     </div>

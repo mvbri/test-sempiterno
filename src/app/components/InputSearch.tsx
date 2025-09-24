@@ -2,13 +2,14 @@
 
 import React from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 function InputSearch() {
   const searchParams = useSearchParams();
   const Pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSearch = (term: string) => {
+  const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
 
     if (term) {
@@ -18,7 +19,7 @@ function InputSearch() {
     }
 
     replace(`${Pathname}?${params.toString()}`);
-  };
+  }, 300);
 
   return (
     <>

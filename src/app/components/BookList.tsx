@@ -8,8 +8,8 @@ interface BookListProps {
 
 const BookList = async ({ query }: BookListProps) => {
   console.log(query.length);
-  const books = await fetchBooks({ query });
   const trendingBooks = await fetchTrendingBooks();
+  const books = await fetchBooks({ query });
 
   type Book = {
     title: string;
