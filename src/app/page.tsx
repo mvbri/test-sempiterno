@@ -8,7 +8,6 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await searchParams;
-  console.log(params);
   const searchQuery = params?.search || "";
   return (
     <div className="pt-[4rem]">
