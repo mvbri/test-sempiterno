@@ -10,8 +10,6 @@ const BookList = async ({ query }: BookListProps) => {
   const trendingBooks = await fetchTrendingBooks();
   const books = await fetchBooks({ query });
 
-  console.log(books);
-
   type Book = {
     title: string;
     author_name: string[];

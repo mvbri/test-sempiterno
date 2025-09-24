@@ -15,10 +15,11 @@ export const fetchBooks = async (
   query: string | string[]
 ): Promise<BookFetch[]> => {
   try {
-    const res = await fetch(`https://openlibrary.org/search.json?q=${query}`);
+    const res = await fetch(`https://openlibrary.org/search.json?q=${query.query}`);
 
     if (!res.ok) throw Error("Something goes wrong");
 
+    
     const data = await res.json();
     data.docs.forEach(
       (docs: any) => (docs.key = docs.key.replace("/works/", ""))

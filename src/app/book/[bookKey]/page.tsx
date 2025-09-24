@@ -15,7 +15,6 @@ export default async function BookDetailsPage({
 
   // Llama a una función para obtener los detalles del libro
   const book = await fetchBookDetails(bookKey);
-  console.log(book);
 
   if (book?.length === 0) {
     return <p>Libro no encontrado.</p>;
