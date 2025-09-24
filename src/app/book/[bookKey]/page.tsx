@@ -1,13 +1,13 @@
 // app/book/[bookKey]/page.tsx
 import React from "react";
-import Image from "next/image";
 import { fetchBookDetails } from "../../lib/data"; // Suponiendo que creaste esta función
 
 interface BookDetailsPageProps {
   params: {
-    bookKey: string | string[];
+    bookKey: string;
   };
 }
+
 export default async function BookDetailsPage({
   params,
 }: BookDetailsPageProps) {
@@ -16,14 +16,25 @@ export default async function BookDetailsPage({
   // Llama a una función para obtener los detalles del libro
   const book = await fetchBookDetails(bookKey);
 
-  if (book?.length === 0) {
+  console.log(book);
+
+  if (!book) {
     return <p>Libro no encontrado.</p>;
   }
+
+  const formatDate = book.created?.value
+    ? new Date(book.created.value).toDateString()
+    : "Fecha no disponible";
+
+  const description =
+    typeof book.description === "object" && book.description !== null
+      ? book.description.values
+      : book.description;
 
   return (
     <div className="container mx-auto p-8">
       <div className="flex justify-between">
-        <h2 className="font-semibold mb-4">{book.title}</h2>
+        <h2 className="font-semibold mb-8">{book?.title}</h2>
         {true ? (
           <button className="max-w-fit cursor-pointer">
             <svg
@@ -32,7 +43,7 @@ export default async function BookDetailsPage({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="size-6"
+              className="size-6 ease-in hover:fill-red-400"
             >
               <path
                 strokeLinecap="round"
@@ -54,8 +65,19 @@ export default async function BookDetailsPage({
           </button>
         )}
       </div>
-      {book.description && <p className="mb-3">{book.description}</p>}
-      {book.created && <p className="text-sm">{book.created.value}</p>}
+      <div className="flex">
+        <img
+          className="mb-4"
+          src={`${
+            book.covers
+              ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg`
+              : "../../../default.jpg"
+          }`}
+          alt="Imagen de producto"
+        />
+        {book.description && <p className="mb-3 pl-8 p-4">{description}</p>}
+      </div>
+      {book.created && <p className="text-sm">{formatDate}</p>}
     </div>
   );
 }
