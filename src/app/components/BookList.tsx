@@ -15,6 +15,7 @@ const BookList = async ({ query }: BookListProps) => {
     title: string;
     author_name: string[];
     key: number;
+    cover_img: string;
   };
 
   return (
@@ -29,7 +30,7 @@ const BookList = async ({ query }: BookListProps) => {
             {books.length > 0 ? (
               <Link
                 href="/"
-                className="grid grid md:grid-cols-[repeat(2,minmax(300px,1fr))]"
+                className="grid grid md:grid-cols-[repeat(3,minmax(300px,1fr))]"
               >
                 {books?.map((book: Book) => (
                   <article
@@ -37,6 +38,11 @@ const BookList = async ({ query }: BookListProps) => {
                     key={book.key}
                   >
                     <div className="mb-3">
+                      <img
+                        className="m-auto"
+                        src={`${book.cover_img || "../../../default.jpg"}`}
+                        alt="Imagen de producto"
+                      />
                       <h3 className="text-center mb-2 font-semibold">
                         {book.title}
                       </h3>
@@ -87,7 +93,7 @@ const BookList = async ({ query }: BookListProps) => {
             {trendingBooks.length > 0 ? (
               <Link
                 href="/"
-                className="grid grid md:grid-cols-[repeat(2,minmax(300px,1fr))]"
+                className="grid grid md:grid-cols-[repeat(3,minmax(300px,1fr))]"
               >
                 {trendingBooks?.map((book: Book) => (
                   <article
@@ -95,6 +101,11 @@ const BookList = async ({ query }: BookListProps) => {
                     key={book.key}
                   >
                     <div className="mb-3">
+                      <img
+                        className="m-auto"
+                        src={`${book.cover_img || "../../../default.jpg"}`}
+                        alt="Imagen de producto"
+                      />
                       <h3 className="text-center mb-2 font-semibold">
                         {book.title}
                       </h3>

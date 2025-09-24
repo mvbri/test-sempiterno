@@ -2,6 +2,7 @@ interface BookFetch {
   key: number;
   title: string;
   author_name: string[];
+  cover_img: string;
 }
 
 export const fetchBooks = async ({ query } : {query: string | string[]}): Promise<BookFetch []> => {
