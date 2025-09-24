@@ -15,10 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.className} antialiased`}
-      >
-        <Nav/>
+      <body className={`${montserrat.className} antialiased`}>
+        <Nav />
         {children}
       </body>
     </html>

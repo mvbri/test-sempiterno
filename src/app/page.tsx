@@ -1,16 +1,18 @@
 import { Suspense } from "react";
-import Books from "./components/Books";
+import BookList from "./components/BookList";
 
-export default async function Home({ searchParams } : { searchParams?: {
-  search?: string
-} }) {
-
-  const params  = await searchParams
-   const query = params?.search || "";
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  console.log(params);
+  const searchQuery = params?.search || "";
   return (
     <div className="pt-[4rem]">
       <Suspense fallback="Loading...">
-        <Books query={query}/>
+        <BookList query={searchQuery} />
       </Suspense>
     </div>
   );

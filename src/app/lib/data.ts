@@ -1,4 +1,10 @@
-export const fetchBooks = async ({ query } : {query: string}) => {
+interface BookFetch {
+  key: number;
+  title: string;
+  author_name: string[];
+}
+
+export const fetchBooks = async ({ query } : {query: string | string[]}): Promise<BookFetch []> => {
   try {
     const res = await fetch(`https://openlibrary.org/search.json?q=${query}`);
 
@@ -10,6 +16,7 @@ export const fetchBooks = async ({ query } : {query: string}) => {
 
   } catch (err) {
     console.log(err);
+    return [];
   }
 };
 

@@ -2,14 +2,25 @@ import React from "react";
 import { fetchBooks, fetchTrendingBooks } from "../lib/data";
 import Link from "next/link";
 
-const Books = async ({ query }: { query: string }) => {
+interface BookListProps {
+  query: string | string[];
+}
+
+const BookList = async ({ query }: BookListProps) => {
+  console.log(query.length);
   const books = await fetchBooks({ query });
   const trendingBooks = await fetchTrendingBooks();
+
+  type Book = {
+    title: string;
+    author_name: string[];
+    key: number;
+  };
 
   return (
     <>
       <div>
-        {query.length !== 0 && (
+        {query.length > 0 ? (
           <div>
             {" "}
             <h1 className="text-center font-semibold">
@@ -20,7 +31,7 @@ const Books = async ({ query }: { query: string }) => {
                 href="/"
                 className="grid grid md:grid-cols-[repeat(2,minmax(300px,1fr))]"
               >
-                {books?.map((book) => (
+                {books?.map((book: Book) => (
                   <article
                     className="p-4 flex flex-col justify-center items-center mb-4"
                     key={book.key}
@@ -67,9 +78,7 @@ const Books = async ({ query }: { query: string }) => {
               <p className="text-center">No se encontraron libros.</p>
             )}
           </div>
-        )}
-
-        {query.length === 0 && (
+        ) : (
           <div>
             {" "}
             <h1 className="text-center font-semibold">
@@ -80,7 +89,7 @@ const Books = async ({ query }: { query: string }) => {
                 href="/"
                 className="grid grid md:grid-cols-[repeat(2,minmax(300px,1fr))]"
               >
-                {trendingBooks?.map((book) => (
+                {trendingBooks?.map((book: Book) => (
                   <article
                     className="p-4 flex flex-col justify-center items-center mb-4"
                     key={book.key}
@@ -133,4 +142,4 @@ const Books = async ({ query }: { query: string }) => {
   );
 };
 
-export default Books;
+export default BookList;

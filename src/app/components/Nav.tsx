@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
-import InputSearch from "./inputSearch";
+import React, { Suspense } from "react";
+import InputSearch from "@/app/components/InputSearch";
 
 function Nav() {
-   const pathName = usePathname()
+  const pathName = usePathname();
   return (
     <nav className="block w-full max-w-screen-lg px-4 py-2 mx-auto bg-white shadow-md rounded-md lg:px-8 lg:py-3 mt-10">
       <div className="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
@@ -35,13 +35,20 @@ function Nav() {
                 />
               </svg>
 
-              <Link href="/favoritos" className={ ` flex items-center ${pathName === "/favoritos" ? "text-blue-600" : ""}`} >
+              <Link
+                href="/favoritos"
+                className={` flex items-center ${
+                  pathName === "/favoritos" ? "text-blue-600" : ""
+                }`}
+              >
                 Favoritos
               </Link>
             </li>
           </ul>
         </div>
-      <InputSearch />
+        <Suspense>
+          <InputSearch />
+        </Suspense>
       </div>
     </nav>
   );
