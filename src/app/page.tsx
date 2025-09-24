@@ -8,7 +8,7 @@ export default async function Home({ searchParams } : { searchParams?: {
   const params  = await searchParams
    const query = params?.search || "";
   return (
-    <div>
+    <div className="pt-[4rem]">
       <Suspense fallback="Loading...">
         <Books query={query}/>
       </Suspense>
