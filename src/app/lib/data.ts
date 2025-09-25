@@ -3,7 +3,7 @@ interface BookDetails {
   title: string;
   author_name?: string[];
   description?: string | {
-    value: string
+    value?: string
   };
   created?: {
     type?: string;

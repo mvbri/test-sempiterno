@@ -29,7 +29,7 @@ export default async function BookDetailsPage(
         <h2 className="font-semibold mb-8">{book?.title}</h2>
         <FavoriteButton book={book} />
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center md:justify-start">
         <img
           className="mb-4"
           src={`${
@@ -40,7 +40,9 @@ export default async function BookDetailsPage(
           alt="Imagen de producto"
         />
         {book.description && (
-          <p className="mb-3 md:pl-8 p-1 md:p-4 md:w-[50em]">{description}</p>
+          <p className="mb-3 md:pl-8 p-1 md:p-4 w-full md:w-[50em]">
+            {description}
+          </p>
         )}
       </div>
       {book.created && <p className="text-sm font-semibold">{formatDate}</p>}
