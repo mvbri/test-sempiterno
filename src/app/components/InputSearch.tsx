@@ -23,7 +23,7 @@ function InputSearch() {
 
   return (
     <>
-      <div className="items-center hidden gap-x-2 lg:flex">
+      <div className="items-center gap-x-2 lg:flex">
         <div className="w-full max-w-sm min-w-[200px]">
           <div className="relative">
             <svg
@@ -50,7 +50,7 @@ function InputSearch() {
           </div>
         </div>
         <button
-          className="rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="rounded-md hidden md:block bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
         >
           Search

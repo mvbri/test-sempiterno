@@ -24,7 +24,7 @@ export default async function BookDetailsPage(
       : book.description;
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-3 md:p-8">
       <div className="flex justify-between">
         <h2 className="font-semibold mb-8">{book?.title}</h2>
         <FavoriteButton book={book} />

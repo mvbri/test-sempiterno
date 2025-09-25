@@ -35,7 +35,6 @@ export const fetchBooks = async (
     data.docs.forEach(
       (doc: BookApi ) => (doc.key = doc.key.replace("/works/", ""))
     );
-    console.log(data.docs)
     return data.docs;
   } catch (err) {
     console.log(err);
