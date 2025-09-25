@@ -2,7 +2,6 @@ interface BookDetails {
   key: string;
   title: string;
   author_name?: string[];
-  publish_date?: string;
   description?: string | {
     value: string
   };
@@ -11,7 +10,8 @@ interface BookDetails {
     value?: string | number | Date | undefined;
   };
   covers?: number[]; 
-  cover_url?: string;
+  cover_i?: string;
+  first_publish_year?: number | string
 }
 
 interface BookApi {
@@ -35,6 +35,7 @@ export const fetchBooks = async (
     data.docs.forEach(
       (doc: BookApi ) => (doc.key = doc.key.replace("/works/", ""))
     );
+    console.log(data.docs)
     return data.docs;
   } catch (err) {
     console.log(err);
@@ -49,8 +50,6 @@ export const fetchTrendingBooks = async (): Promise<BookApi[] >  => {
     if (!res.ok) throw Error("Something goes wrong");
 
     const data = await res.json();
-
-    console.log(data)
 
     data.works.forEach(
       (work: BookApi) => (work.key = work.key.replace("/works/", ""))
@@ -70,7 +69,6 @@ export const fetchBookDetails = async (bookKey:  string): Promise<BookDetails| n
     if (!res.ok) throw Error("Something goes wrong");
 
     const data = await res.json();
-    console.log(data)
 
     data.key = data.key.replace("/works/", "");
 
