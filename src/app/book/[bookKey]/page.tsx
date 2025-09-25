@@ -29,7 +29,7 @@ export default async function BookDetailsPage(
         <h2 className="font-semibold mb-8">{book?.title}</h2>
         <FavoriteButton book={book} />
       </div>
-      <div className="flex">
+      <div className="flex flex-wrap">
         <img
           className="mb-4"
           src={`${
@@ -39,9 +39,11 @@ export default async function BookDetailsPage(
           }`}
           alt="Imagen de producto"
         />
-        {book.description && <p className="mb-3 pl-8 p-4">{description}</p>}
+        {book.description && (
+          <p className="mb-3 md:pl-8 p-1 md:p-4 md:w-[50em]">{description}</p>
+        )}
       </div>
-      {book.created && <p className="text-sm">{formatDate}</p>}
+      {book.created && <p className="text-sm font-semibold">{formatDate}</p>}
     </div>
   );
 }

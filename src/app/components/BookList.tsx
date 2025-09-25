@@ -16,7 +16,7 @@ const BookList = async ({ query }: BookListProps) => {
         {query.length > 0 ? (
           <div>
             {" "}
-            <h1 className="text-center font-semibold mb-8">
+            <h1 className="text-center text-sm md:text-base font-semibold mb-8">
               Resultados de búsqueda para: {query}
             </h1>
             {books.length > 0 ? (
