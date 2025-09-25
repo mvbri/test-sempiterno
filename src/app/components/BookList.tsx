@@ -3,19 +3,12 @@ import { fetchBooks, fetchTrendingBooks } from "../lib/data";
 import Link from "next/link";
 
 interface BookListProps {
-  query: string | string[];
+  query: string;
 }
 
 const BookList = async ({ query }: BookListProps) => {
   const trendingBooks = await fetchTrendingBooks();
-  const books = await fetchBooks({ query });
-
-  type Book = {
-    title: string;
-    author_name: string[];
-    key: number;
-    cover_i: string;
-  };
+  const books = await fetchBooks(query);
 
   return (
     <>
@@ -28,7 +21,7 @@ const BookList = async ({ query }: BookListProps) => {
             </h1>
             {books.length > 0 ? (
               <div className="grid grid md:grid-cols-[repeat(3,minmax(300px,1fr))]">
-                {books?.map((book: Book) => (
+                {books?.map((book) => (
                   <Link key={book.key} href={`/book/${book.key}`}>
                     <article className="p-4 flex flex-col justify-center items-center mb-4">
                       <div className="mb-3">
@@ -91,7 +84,7 @@ const BookList = async ({ query }: BookListProps) => {
             </h1>
             {trendingBooks.length > 0 ? (
               <div className="grid grid md:grid-cols-[repeat(3,minmax(300px,1fr))]">
-                {trendingBooks?.map((book: Book) => (
+                {trendingBooks?.map((book) => (
                   <Link key={book.key} href={`/book/${book.key}`}>
                     <article className="p-4 flex flex-col justify-center items-center mb-4">
                       <div className="mb-3">

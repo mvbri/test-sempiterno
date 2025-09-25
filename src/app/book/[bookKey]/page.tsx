@@ -1,19 +1,13 @@
 // app/book/[bookKey]/page.tsx
 import React from "react";
-import { fetchBookDetails } from "../../lib/data"; // Suponiendo que creaste esta función
+import { fetchBookDetails } from "../../lib/data";
 
-interface BookDetailsPageProps {
-  params: {
-    bookKey: string;
-  };
-}
+export default async function BookDetailsPage(
+  props: PageProps<"/book/[bookKey]">
+) {
+  const params = await props.params;
+  const { bookKey } = params;
 
-export default async function BookDetailsPage({
-  params,
-}: BookDetailsPageProps) {
-  const { bookKey } = await params;
-
-  // Llama a una función para obtener los detalles del libro
   const book = await fetchBookDetails(bookKey);
 
   console.log(book);
@@ -28,7 +22,7 @@ export default async function BookDetailsPage({
 
   const description =
     typeof book.description === "object" && book.description !== null
-      ? book.description.values
+      ? book.description?.value
       : book.description;
 
   return (

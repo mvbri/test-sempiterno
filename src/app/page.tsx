@@ -5,7 +5,7 @@ import Loading from "./Loading";
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
   const params = await searchParams;
   const searchQuery = params?.search || "";

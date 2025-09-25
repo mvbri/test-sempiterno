@@ -1,16 +1,11 @@
-interface BookFetch {
-  key: string;
-  title: string;
-  author_name: string[];
-  cover_i: number;
-}
-
 interface BookDetails {
   key: string;
   title: string;
   author_name?: string[];
   publish_date?: string;
-  description?: string | string[];
+  description?: string | {
+    value: string
+  };
   created?: {
     type?: string;
     value?: string | number | Date | undefined;
@@ -22,32 +17,32 @@ interface BookDetails {
 interface BookApi {
   key: string;
   title: string;
-  author_name: string[];
+  author_name?: string[];
   cover_i?: number;
 }
 
 
 export const fetchBooks = async (
-  query: string | string[]
-): Promise<BookFetch[] | null >  => {
+  query: string
+): Promise<BookApi[] >  => {
   try {
-    const res = await fetch(`https://openlibrary.org/search.json?q=${query.query}`);
+    const res = await fetch(`https://openlibrary.org/search.json?q=${query}`);
 
     if (!res.ok) throw Error("Something goes wrong");
 
     
     const data = await res.json();
     data.docs.forEach(
-      (docs: BookApi[] ) => (docs.key = docs.key.replace("/works/", ""))
+      (doc: BookApi ) => (doc.key = doc.key.replace("/works/", ""))
     );
     return data.docs;
   } catch (err) {
     console.log(err);
-    return null;
+    return [];
   }
 };
 
-export const fetchTrendingBooks = async () => {
+export const fetchTrendingBooks = async (): Promise<BookApi[] >  => {
   try {
     const res = await fetch(`https://openlibrary.org/trending/daily.json`);
 
@@ -64,6 +59,7 @@ export const fetchTrendingBooks = async () => {
     return data.works;
   } catch (err) {
     console.log(err);
+    return []
   }
 };
 
