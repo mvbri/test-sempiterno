@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React, { Suspense, useState } from "react";
 import InputSearch from "@/app/components/InputSearch";
 
-function Nav() {
+function Nav({ input = false }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,7 +17,7 @@ function Nav() {
       <div className="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
         <Link
           href="/"
-          className="mr-4 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold"
+          className="mr-8 block cursor-pointer py-1.5 text-base text-slate-800 font-semibold"
         >
           Buscador de Libros
         </Link>
@@ -50,9 +50,12 @@ function Nav() {
             </li>
           </ul>
         </div>
-        <Suspense>
-          <InputSearch />
-        </Suspense>
+        {input ? (
+          <Suspense>
+            <InputSearch />
+          </Suspense>
+        ) : null}
+
         {/* Botón de menú para pantallas pequeñas (mobile) */}
         <button
           className="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"

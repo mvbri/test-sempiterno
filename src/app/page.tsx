@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import BookList from "./components/BookList";
 import Loading from "./Loading";
+import Nav from "./components/Nav";
 
 export default async function Home({
   searchParams,
@@ -10,10 +11,13 @@ export default async function Home({
   const params = await searchParams;
   const searchQuery = params?.search || "";
   return (
-    <div className="pt-[4rem]">
-      <Suspense key={searchQuery as string} fallback={<Loading />}>
-        <BookList query={searchQuery} />
-      </Suspense>
+    <div>
+      <Nav input={true} />
+      <div className="pt-[4rem]">
+        <Suspense key={searchQuery as string} fallback={<Loading />}>
+          <BookList query={searchQuery} />
+        </Suspense>
+      </div>
     </div>
   );
 }

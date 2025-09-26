@@ -28,7 +28,7 @@ const BookList = async ({ query }: BookListProps) => {
         ) : (
           <div>
             {" "}
-            <h1 className="text-center font-semibold mb-8">
+            <h1 className="text-center text-sm md:text-base font-semibold mb-8">
               Los libros más populares
             </h1>
             {trendingBooks.length > 0 ? (

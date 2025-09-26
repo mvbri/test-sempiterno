@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { montserrat } from "./fonts";
-import Nav from "./components/Nav";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`}>
-        <Nav />
-        {children}
-      </body>
+      <body className={`${montserrat.className} antialiased`}>{children}</body>
     </html>
   );
 }

@@ -2,13 +2,94 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="text-center">
-      <div
-        className="animate-spin inline-block size-6 border-3 border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500"
-        role="status"
-        aria-label="loading"
-      >
-        <span className="sr-only">Loading...</span>
+    <div>
+      <div className="grid gap-2 grid md:grid-cols-[repeat(3,minmax(300px,1fr))] mb-8">
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-10 mbs m-auto"></div>
+          </div>
+        </div>
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-10 mbs m-auto"></div>
+          </div>
+        </div>
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-10 mbs m-auto"></div>
+          </div>
+        </div>
+      </div>
+      <div className="grid gap-2 grid md:grid-cols-[repeat(3,minmax(300px,1fr))] ">
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs m-auto"></div>
+          </div>
+        </div>
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-10 mbs m-auto"></div>
+          </div>
+        </div>
+        <div className="ssc ssc-card max-w-[18.75rem] m-auto">
+          <div className="ssc-wrapper">
+            <div className="ssc-square mb"></div>
+          </div>
+          <div></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-30 mbs"></div>
+            <div className="ssc-line w-70 mbs"></div>
+          </div>
+          <div className="ssc-hr"></div>
+          <div className="ssc-wrapper">
+            <div className="ssc-line w-10 mbs m-auto"></div>
+          </div>
+        </div>
       </div>
     </div>
   );
