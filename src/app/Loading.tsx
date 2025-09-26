@@ -3,7 +3,7 @@ import React from "react";
 const Loading = () => {
   return (
     <div>
-      <div className="grid gap-2 grid md:grid-cols-[repeat(3,minmax(300px,1fr))] mb-8">
+      <div className="grid gap-8 grid md:grid-cols-[repeat(3,minmax(300px,1fr))] mb-8">
         <div className="ssc ssc-card max-w-[18.75rem] m-auto">
           <div className="ssc-wrapper">
             <div className="ssc-square mb"></div>

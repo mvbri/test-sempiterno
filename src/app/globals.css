@@ -1,2 +1,6 @@
 @import "skeleton-screen-css/dist/index.css";
 @import "tailwindcss";
+
+.ssc-square {
+  height: 20rem;
+}
