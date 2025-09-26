@@ -1,18 +1,4 @@
-interface BookDetails {
-  key: string;
-  title: string;
-  author_name?: string[];
-  description?: string | {
-    value?: string
-  };
-  created?: {
-    type?: string;
-    value?: string | number | Date | undefined;
-  };
-  covers?: number[]; 
-  cover_i?: string;
-  first_publish_year?: number | string
-}
+import { Book } from "../interfaces";
 
 interface BookApi {
   key: string;
@@ -61,7 +47,7 @@ export const fetchTrendingBooks = async (): Promise<BookApi[] >  => {
   }
 };
 
-export const fetchBookDetails = async (bookKey:  string): Promise<BookDetails| null> => {
+export const fetchBookDetails = async (bookKey:  string): Promise<Book| null> => {
   try {
     const res = await fetch(`https://openlibrary.org/works/${bookKey}.json`);
 

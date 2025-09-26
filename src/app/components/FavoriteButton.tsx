@@ -1,24 +1,7 @@
 "use client";
 import React from "react";
 import { useBookStore } from "../bookStore";
-
-interface Book {
-  key: string;
-  title: string;
-  author_name?: string[];
-  publish_date?: string;
-  description?:
-    | string
-    | {
-        value: string;
-      };
-  created?: {
-    type?: string;
-    value?: string | number | Date | undefined;
-  };
-  covers?: number[];
-  cover_url?: string;
-}
+import { Book } from "../interfaces";
 
 function FavoriteButton({ book }: { book: Book }) {
   const addFavorite = useBookStore((state) => state.addFavorite);

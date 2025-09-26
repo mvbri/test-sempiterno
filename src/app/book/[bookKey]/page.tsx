@@ -15,7 +15,7 @@ export default async function BookDetailsPage(
   }
 
   const formatDate = book.created?.value
-    ? new Date(book.created.value).toDateString()
+    ? new Date(book.created?.value).toDateString()
     : "Fecha no disponible";
 
   const description =
